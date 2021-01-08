@@ -1,0 +1,4 @@
+.idea
+statitcfiles
+db.sqlite3
+__pycache__
