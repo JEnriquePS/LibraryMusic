@@ -25,7 +25,7 @@ SECRET_KEY = 'w&#uqhdki63_vi2vki7ft^r1a4@@vf51qvb#skgysy52j26yi-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'https://library-music.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'library-music.herokuapp.com']
 
 
 # Application definition
