@@ -161,3 +161,38 @@ class SongApiView(APIView):
         song.delete()
         return Response({'message': f'Canción {name} eliminada'},
                         status=status.HTTP_200_OK)
+
+
+class SongsListByAlbum(APIView):
+    """
+    Lista de conciones por album
+    """
+    def get(self, request, name=None):
+        album = Albums.objects.get(name=name)
+        serializer = SongsSerializer(album.songs_set, many=True)
+        return Response(serializer.data)
+
+
+class SongsListByArtist(APIView):
+    """
+    Lista de conciones por artista
+    """
+    def get(self, request, name=None):
+        artist = Artists.objects.get(name=name)
+        songs = []
+        for album in artist.albums_set.all():
+            for song in album.songs_set.all():
+                songs.append(song)
+        serializer = SongsSerializer(songs, many=True)
+        return Response(serializer.data)
+
+
+class AlbumsListByArtist(APIView):
+    """
+    Lista de albums por artista
+    """
+    def get(self, request, name=None):
+        artist = Artists.objects.get(name=name)
+        serializer = AlbumSerializer(artist.albums_set, many=True)
+        return Response(serializer.data)
+

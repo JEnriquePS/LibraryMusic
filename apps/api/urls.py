@@ -34,5 +34,8 @@ urlpatterns = [
     path('song/update/<str:name>/', SongApiView.as_view()),
     path('song/delete/<str:name>/', SongApiView.as_view()),
 
+    path('album/full/songs/<str:name>/', SongsListByAlbum.as_view()),
+    path('artist/full/songs/<str:name>/', SongsListByArtist.as_view()),
+    path('artist/full/albums/<str:name>/', AlbumsListByArtist.as_view()),
 
 ]
