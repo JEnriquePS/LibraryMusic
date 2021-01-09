@@ -1,8 +1,9 @@
 from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+
+from .authenticated import CustomAuthenticated
 from .serializers import (CountrySerializer, ArtistSerializer, AlbumSerializer,
                           SongsSerializer)
 from apps.countries.models import Countries
@@ -12,7 +13,7 @@ from apps.songs.models import Songs
 
 
 class CountryApiView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:
@@ -44,7 +45,7 @@ class CountryApiView(APIView):
 
 
 class ArtistApiView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:
@@ -84,7 +85,7 @@ class ArtistApiView(APIView):
 
 
 class AlbumApiView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:
@@ -124,7 +125,7 @@ class AlbumApiView(APIView):
 
 
 class SongApiView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [CustomAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:
