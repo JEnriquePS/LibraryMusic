@@ -1,4 +1,5 @@
 from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,6 +12,7 @@ from apps.songs.models import Songs
 
 
 class CountryApiView(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:
@@ -42,6 +44,8 @@ class CountryApiView(APIView):
 
 
 class ArtistApiView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, name=None):
         if name is not None:
             artist = get_object_or_404(Artists.objects.all(), name=name)
@@ -80,6 +84,7 @@ class ArtistApiView(APIView):
 
 
 class AlbumApiView(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:
@@ -119,6 +124,7 @@ class AlbumApiView(APIView):
 
 
 class SongApiView(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, name=None):
         if name is not None:

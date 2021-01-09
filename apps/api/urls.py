@@ -1,6 +1,15 @@
 from django.urls import path
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 from .views import *
 urlpatterns = [
+    path('token/', TokenObtainPairView.as_view()),
+    path('token/update/', TokenRefreshView.as_view()),
+
     path('country/create/', CountryApiView.as_view()),
     path('country/list/', CountryApiView.as_view()),
     path('country/detail/<str:name>/', CountryApiView.as_view()),
