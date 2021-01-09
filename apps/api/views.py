@@ -35,7 +35,13 @@ class CountryApiView(APIView):
                             status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, name=None):
-        return Response({'m': 'pu'})
+        country = get_object_or_404(Countries.objects.all(), name=name)
+        serializer = ArtistSerializer(instance=country, data=request.data,
+                                      partial=True)
+        if serializer.is_valid(raise_exception=True):
+            country = serializer.save()
+            return Response(serializer.data,
+                            status=status.HTTP_201_CREATED)
 
     def delete(self, request, name=None):
         country = get_object_or_404(Countries.objects.all(), name=name)
