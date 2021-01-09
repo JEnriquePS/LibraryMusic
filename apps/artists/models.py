@@ -9,8 +9,8 @@ class Artists(models.Model):
     slug = models.SlugField(max_length=200, verbose_name='slug',
                             blank=True, null=True)
     about = models.TextField(verbose_name="Acerca del Artista")
-    county = models.ForeignKey(Countries, on_delete=models.CASCADE,
-                               verbose_name="País")
+    country = models.ForeignKey(Countries, on_delete=models.CASCADE,
+                                verbose_name="País")
 
     class Meta:
         verbose_name = "Artista"
