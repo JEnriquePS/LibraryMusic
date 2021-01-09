@@ -36,8 +36,8 @@ class CountryApiView(APIView):
 
     def put(self, request, name=None):
         country = get_object_or_404(Countries.objects.all(), name=name)
-        serializer = ArtistSerializer(instance=country, data=request.data,
-                                      partial=True)
+        serializer = CountrySerializer(instance=country, data=request.data,
+                                       partial=True)
         if serializer.is_valid(raise_exception=True):
             country = serializer.save()
             return Response(serializer.data,
