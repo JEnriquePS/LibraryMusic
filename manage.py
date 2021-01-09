@@ -3,15 +3,15 @@
 import os
 import sys
 
-try:
-    import dotenv
-except Exception:
-    dotenv = None
+# try:
+#     import dotenv
+# except Exception:
+#     dotenv = None
 
 
 def main():
-    if dotenv:
-        dotenv.read_dotenv()
+    # if dotenv:
+    #     dotenv.read_dotenv()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LibraryMusic.settings')
     try:
         from django.core.management import execute_from_command_line
